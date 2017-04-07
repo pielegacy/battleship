@@ -5,6 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+
+namespace Battleships
+{
 /// <summary>
 /// A Ship has all the details about itself. For example the shipname,
 /// size, number of hits taken and the location. Its able to add tiles,
@@ -133,7 +136,7 @@ public class Ship
 		_direction = direction;
 	}
 }
-
+}
 //=======================================================
 //Service provided by Telerik (www.telerik.com)
 //Conversion powered by NRefactory.

@@ -5,6 +5,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+
+namespace Battleships
+{
 /// <summary>
 /// AIHardPlayer is a type of player. This AI will know directions of ships
 /// when it has found 2 ship tiles and will try to destroy that ship. If that ship
@@ -354,7 +357,7 @@ public class AIHardPlayer : AIPlayer
 	}
 
 }
-
+}
 //=======================================================
 //Service provided by Telerik (www.telerik.com)
 //Conversion powered by NRefactory.
