@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+namespace Battleships
+{
 static class GameLogic
 {
 	public static void Main()
@@ -36,3 +38,4 @@ static class GameLogic
 //Twitter: @telerik
 //Facebook: facebook.com/telerik
 //=======================================================
+}

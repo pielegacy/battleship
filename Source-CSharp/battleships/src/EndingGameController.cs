@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using SwinGameSDK;
-
+namespace Battleships
+{
 /// <summary>
 /// The EndingGameController is responsible for managing the interactions at the end
 /// of a game.
@@ -50,3 +51,4 @@ static class EndingGameController
 //Twitter: @telerik
 //Facebook: facebook.com/telerik
 //=======================================================
+}

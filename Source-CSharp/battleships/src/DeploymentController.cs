@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
 using SwinGameSDK;
-
+namespace Battleships
+{
 /// <summary>
 /// The DeploymentController controls the players actions
 /// during the deployment phase.
@@ -189,3 +190,5 @@ static class DeploymentController
 //Twitter: @telerik
 //Facebook: facebook.com/telerik
 //=======================================================
+
+}

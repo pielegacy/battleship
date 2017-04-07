@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+namespace Battleships
+{
 /// <summary>
 /// This includes a number of utility methods for
 /// drawing and interacting with the Mouse.
@@ -321,3 +323,4 @@ static class UtilityFunctions
 //Twitter: @telerik
 //Facebook: facebook.com/telerik
 //=======================================================
+}

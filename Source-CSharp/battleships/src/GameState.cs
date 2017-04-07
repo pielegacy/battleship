@@ -10,7 +10,8 @@ using System.Diagnostics;
 /// This is used to control the actions and view displayed to
 /// the player.
 /// </summary>
-
+namespace Battleships
+{
 public enum GameState
 {
 	/// <summary>
@@ -60,3 +61,4 @@ public enum GameState
 //Twitter: @telerik
 //Facebook: facebook.com/telerik
 //=======================================================
+}
