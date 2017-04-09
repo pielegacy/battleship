@@ -59,7 +59,7 @@ static class DeploymentController
 			_currentDirection = Direction.LeftRight;
 		}
 
-		if (SwinGame.KeyTyped(KeyCode.vk_R)) {
+		if (SwinGame.KeyTyped(KeyCode.vk_r)) {
 			GameController.HumanPlayer.RandomizeDeployment();
 		}
 
@@ -111,7 +111,7 @@ static class DeploymentController
 					GameController.HumanPlayer.PlayerGrid.MoveShip(row, col, _selectedShip, _currentDirection);
 				} catch (Exception ex) {
 					Audio.PlaySoundEffect(GameResources.GameSound("Error"));
-					UtilityFunctions.Message = ex.UtilityFunctions.Message;
+					UtilityFunctions.Message = ex.Message;
 				}
 			}
 		}
@@ -162,7 +162,8 @@ static class DeploymentController
 
 		SwinGame.DrawBitmap(GameResources.GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
 
-		DrawUtilityFunctions.Message();
+		UtilityFunctions.DrawMessage();
+
 	}
 
 	/// <summary>

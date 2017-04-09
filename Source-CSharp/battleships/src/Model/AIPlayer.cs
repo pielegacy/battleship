@@ -77,6 +77,16 @@ public abstract class AIPlayer : Player
 		{
 			return !ReferenceEquals(@this, null) || !ReferenceEquals(other, null) || @this.Row != other.Row || @this.Column != other.Column;
 		}
+
+		public override bool Equals(Object obj)
+		{
+			return this == obj;
+		}
+
+		public override int GetHashCode()
+		{
+			return (_Row + _Column).GetHashCode();
+		}
 	}
 
 

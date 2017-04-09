@@ -92,12 +92,9 @@ public class Player : IEnumerable<Ship>
 	/// <returns>The ship with the indicated name</returns>
 	/// <remarks>The none ship returns nothing/null</remarks>
 	public Ship Ship(ShipName name) {
-		get {
 			if (name == ShipName.None)
 				return null;
-
-			return _Ships[name]
-		}
+			return _Ships[name];
 	}
 
 	/// <summary>
