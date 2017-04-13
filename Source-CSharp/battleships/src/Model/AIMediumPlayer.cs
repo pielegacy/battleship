@@ -115,7 +115,7 @@ public class AIMediumPlayer : AIPlayer
 	private void AddTarget(int row, int column)
 	{
 
-		if (row >= 0 && column >= 0 && row < EnemyGrid.Height && column < EnemyGrid.Width && EnemyGrid.Item(row, column) == TileView.Sea) {
+		if (row >= 0 && column >= 0 && row < EnemyGrid.Height && column < EnemyGrid.Width && EnemyGrid[row, column] == TileView.Sea) {
 			_Targets.Push(new Location(row, column));
 		}
 	}

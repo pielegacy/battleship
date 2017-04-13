@@ -80,7 +80,10 @@ public abstract class AIPlayer : Player
 
 		public override bool Equals(Object obj)
 		{
-			return this == obj;
+			if  (obj.GetType() == typeof(Location))
+				return this == (Location)obj;
+			else
+				return false;
 		}
 
 		public override int GetHashCode()
@@ -142,7 +145,7 @@ public abstract class AIPlayer : Player
 		int i = 0;
 		for (i = 0; i <= 150; i++) {
 			//Dont delay if window is closed
-			if (SwinGame.WindowCloseRequested)
+			if (SwinGame.WindowCloseRequested())
 				return;
 
 			SwinGame.Delay(5);
