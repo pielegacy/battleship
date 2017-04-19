@@ -19,20 +19,21 @@ static class DeploymentController
 	private const int SHIPS_HEIGHT = 90;
 
 	private const int SHIPS_WIDTH = 300;
-	private const int TOP_BUTTONS_TOP = 72;
 
-	private const int TOP_BUTTONS_HEIGHT = 46;
-	private const int PLAY_BUTTON_LEFT = 693;
-
-	private const int PLAY_BUTTON_WIDTH = 80;
-	private const int UP_DOWN_BUTTON_LEFT = 410;
-
-	private const int LEFT_RIGHT_BUTTON_LEFT = 350;
 	private const int RANDOM_BUTTON_LEFT = 547;
-
 	private const int RANDOM_BUTTON_WIDTH = 51;
 
+	private const int TOP_BUTTONS_TOP = 72;
+	private const int TOP_BUTTONS_HEIGHT = 46;
 	private const int DIR_BUTTONS_WIDTH = 47;
+
+	private const int UP_DOWN_BUTTON_LEFT = 410;
+	private const int LEFT_RIGHT_BUTTON_LEFT = 350;
+
+	private const int PLAY_BUTTON_LEFT = 693;
+	private const int PLAY_BUTTON_WIDTH = 80;
+
+
 
 	private const int TEXT_OFFSET = 5;
 	private static Direction _currentDirection = Direction.UpDown;
@@ -75,7 +76,7 @@ static class DeploymentController
 			if (GameController.HumanPlayer.ReadyToDeploy & UtilityFunctions.IsMouseInRectangle(PLAY_BUTTON_LEFT, TOP_BUTTONS_TOP, PLAY_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
 				GameController.EndDeployment();
 			} else if (UtilityFunctions.IsMouseInRectangle(UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
-				_currentDirection = Direction.LeftRight;
+				_currentDirection = Direction.UpDown;
 			} else if (UtilityFunctions.IsMouseInRectangle(LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP, DIR_BUTTONS_WIDTH, TOP_BUTTONS_HEIGHT)) {
 				_currentDirection = Direction.LeftRight;
 			} else if (UtilityFunctions.IsMouseInRectangle(RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP, RANDOM_BUTTON_WIDTH, TOP_BUTTONS_HEIGHT)) {
@@ -130,7 +131,7 @@ static class DeploymentController
 			SwinGame.DrawBitmap(GameResources.GameImage("LeftRightButton"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP);
 			//SwinGame.DrawText("U/D", Color.Gray, GameFont("Menu"), UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP)
 			//SwinGame.DrawText("L/R", Color.White, GameFont("Menu"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP)
-		} else {
+		} else if (_currentDirection == Direction.UpDown)  {
 			SwinGame.DrawBitmap(GameResources.GameImage("UpDownButton"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP);
 			//SwinGame.DrawText("U/D", Color.White, GameFont("Menu"), UP_DOWN_BUTTON_LEFT, TOP_BUTTONS_TOP)
 			//SwinGame.DrawText("L/R", Color.Gray, GameFont("Menu"), LEFT_RIGHT_BUTTON_LEFT, TOP_BUTTONS_TOP)
