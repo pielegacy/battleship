@@ -9,7 +9,7 @@ namespace Battleships
 /// <summary>
 /// The menu controller handles the drawing and user interactions
 /// from the menus in the game. These include the main menu, game
-/// menu and the settings m,enu.
+/// menu and the settings menu.
 /// </summary>
 
 static class MenuController
