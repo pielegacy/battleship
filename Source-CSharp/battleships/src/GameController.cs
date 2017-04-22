@@ -14,6 +14,9 @@ namespace Battleships
 /// </summary>
 public static class GameController
 {
+	//time management
+	private static int _times;
+	private static string _msg;
 
 	private static BattleShipsGame _theGame;
 	private static Player _human;
@@ -335,8 +338,22 @@ public static class GameController
 		}
 
 		UtilityFunctions.DrawAnimations();
-
+		
 		SwinGame.RefreshScreen();
+
+		//time tracking for message to fade away
+		_times++;
+
+		if (_msg != UtilityFunctions.Message)
+		{
+			_times=0;
+			_msg=UtilityFunctions.Message;
+		}
+		else if (_times >1000)
+		{
+			UtilityFunctions.Message="";
+		} 
+
 	}
 
 	/// <summary>
