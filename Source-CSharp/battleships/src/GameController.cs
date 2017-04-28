@@ -298,6 +298,9 @@ public static class GameController
 			case GameState.ViewingHighScores:
 				HighScoreController.HandleHighScoreInput();
 				break;
+			case GameState.ViewingHowTo: // handle How to section
+				HowToController.HandleHowToInput();
+				break;
 		}
 
 		UtilityFunctions.UpdateAnimations();
