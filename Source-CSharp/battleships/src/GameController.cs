@@ -338,7 +338,7 @@ public static class GameController
 			case GameState.ViewingHighScores:
 				HighScoreController.DrawHighScores();
 				break;
-			case GameState.ViewingHighScores:
+			case GameState.ViewingHowTo:
 				HowToController.DrawHowTo();
 				break;
 		}
