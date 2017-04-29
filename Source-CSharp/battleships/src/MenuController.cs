@@ -206,6 +206,9 @@ static class MenuController
 			case AIOption.Hard:				
 				currentDifficulty="Hard";	
 				break;
+			default:
+				currentDifficulty="Easy";	
+				break;
 		}	
 		SwinGame.DrawTextLines(currentDifficulty, MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, MENU_RIGHT + 100, MENU_TOP - 15, BUTTON_WIDTH, BUTTON_HEIGHT);
 	}
