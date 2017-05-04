@@ -24,8 +24,9 @@ static class MenuController
 	private static readonly string[][] _menuStructure = {
 		new string[] {
 			"PLAY",
-			"SETUP",
+			"DIFFICULTY", // previously called setup, therefore all setup related name is actually difficulty
 			"SCORES",
+			"HOW TO",
 			"QUIT"
 		},
 		new string[] {
@@ -40,8 +41,10 @@ static class MenuController
 		}
 
 	};
+	private static AIOption _opt;
 	private const int MENU_TOP = 575;
 	private const int MENU_LEFT = 30;
+	private const int MENU_RIGHT = 575;
 	private const int MENU_GAP = 0;
 	private const int BUTTON_WIDTH = 75;
 	private const int BUTTON_HEIGHT = 15;
@@ -56,7 +59,10 @@ static class MenuController
 	private const int MAIN_MENU_SETUP_BUTTON = 1;
 	private const int MAIN_MENU_TOP_SCORES_BUTTON = 2;
 
-	private const int MAIN_MENU_QUIT_BUTTON = 3;
+	//How to button
+	private const int MAIN_MENU_HOW_TO_BUTTON = 3;
+
+	private const int MAIN_MENU_QUIT_BUTTON = 4;
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
@@ -142,7 +148,11 @@ static class MenuController
 		//Clears the Screen to Black
 		//SwinGame.DrawText("Main Menu", Color.White, GameFont("ArialLarge"), 50, 50)
 
-		DrawButtons(MAIN_MENU);
+		DrawButtons(MAIN_MENU);		
+
+		//draw current difficulty
+		DrawDifficulty(_opt);
+
 	}
 
 	/// <summary>
@@ -179,7 +189,30 @@ static class MenuController
 	{
 		DrawButtons(menu, 0, 0);
 	}
+    
+	//Draw difficulty
+	private static void DrawDifficulty(AIOption opt)
+	{
+		SwinGame.DrawTextLines("Difficulty:", MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, MENU_RIGHT, MENU_TOP - 15, BUTTON_WIDTH, BUTTON_HEIGHT);
 
+		string currentDifficulty="";
+		switch (opt) {
+			case AIOption.Easy:				
+				currentDifficulty="Easy";						
+				break;
+			case AIOption.Medium:				
+				currentDifficulty="Medium";	
+				break;
+			case AIOption.Hard:				
+				currentDifficulty="Hard";	
+				break;
+			default:
+				currentDifficulty="Easy";	
+				break;
+		}	
+		SwinGame.DrawTextLines(currentDifficulty, MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, MENU_RIGHT + 100, MENU_TOP - 15, BUTTON_WIDTH, BUTTON_HEIGHT);
+	}
+	
 	/// <summary>
 	/// Draws the menu at the indicated level.
 	/// </summary>
@@ -203,9 +236,10 @@ static class MenuController
 			//SwinGame.FillRectangle(Color.White, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT)
 			SwinGame.DrawTextLines(_menuStructure[menu][i], MENU_COLOR, Color.Black, GameResources.GameFont("Menu"), FontAlignment.AlignCenter, btnLeft + TEXT_OFFSET, btnTop + TEXT_OFFSET, BUTTON_WIDTH, BUTTON_HEIGHT);
 
-			if (SwinGame.MouseDown(MouseButton.LeftButton) & IsMouseOverMenu(i, level, xOffset)) {
+			if (SwinGame.MouseDown(MouseButton.LeftButton) & IsMouseOverMenu(i, level, xOffset)) 
+			{
 				SwinGame.DrawRectangle(HIGHLIGHT_COLOR, btnLeft, btnTop, BUTTON_WIDTH, BUTTON_HEIGHT);
-			}
+			}	
 		}
 	}
 
@@ -270,6 +304,9 @@ static class MenuController
 			case MAIN_MENU_TOP_SCORES_BUTTON:
 				GameController.AddNewState(GameState.ViewingHighScores);
 				break;
+			case MAIN_MENU_HOW_TO_BUTTON:
+				GameController.AddNewState(GameState.ViewingHowTo);
+				break;
 			case MAIN_MENU_QUIT_BUTTON:
 				GameController.EndCurrentState();
 				break;
@@ -281,18 +318,22 @@ static class MenuController
 	/// </summary>
 	/// <param name="button">the button pressed</param>
 	private static void PerformSetupMenuAction(int button)
-	{
+	{		
 		switch (button) {
 			case SETUP_MENU_EASY_BUTTON:
-				GameController.SetDifficulty(AIOption.Hard);
+				GameController.SetDifficulty(AIOption.Easy);
+				_opt=AIOption.Easy;			
 				break;
 			case SETUP_MENU_MEDIUM_BUTTON:
-				GameController.SetDifficulty(AIOption.Hard);
+				GameController.SetDifficulty(AIOption.Medium);
+				_opt=AIOption.Medium;	
 				break;
 			case SETUP_MENU_HARD_BUTTON:
 				GameController.SetDifficulty(AIOption.Hard);
+				_opt=AIOption.Hard;	
 				break;
-		}
+		}				
+		
 		//Always end state - handles exit button as well
 		GameController.EndCurrentState();
 	}

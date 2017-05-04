@@ -121,6 +121,14 @@ public class SeaGrid : ISeaGrid
 	/// <param name="newShip">the ship</param>
 	private void AddShip(int row, int col, Direction direction, Ship newShip)
 	{
+		//for Catch exception
+		int xRow = 0;
+		int xCol = 0;
+		
+		Direction xDirection=newShip.Direction;
+		xRow=newShip.Row;
+		xCol=newShip.Column;
+
 		try {
 			int size = newShip.Size;
 			int currentRow = row;
@@ -152,7 +160,9 @@ public class SeaGrid : ISeaGrid
 			newShip.Deployed(direction, row, col);
 		} catch (Exception e) {
 			newShip.Remove();
-			//if fails remove the ship
+			//if fails remove the ship and put back the original one
+			AddShip(xRow,xCol,xDirection,newShip);
+			
 			throw new ApplicationException(e.Message);
 
 		} finally {

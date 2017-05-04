@@ -14,6 +14,9 @@ namespace Battleships
 /// </summary>
 public static class GameController
 {
+	//time management
+	private static int _times;
+	private static string _msg;
 
 	private static BattleShipsGame _theGame;
 	private static Player _human;
@@ -76,6 +79,9 @@ public static class GameController
 
 		//create the players
 		switch (_aiSetting) {
+			case AIOption.Easy:
+				_ai = new AIEasyPlayer(_theGame);
+				break;
 			case AIOption.Medium:
 				_ai = new AIMediumPlayer(_theGame);
 				break;
@@ -83,7 +89,7 @@ public static class GameController
 				_ai = new AIHardPlayer(_theGame);
 				break;
 			default:
-				_ai = new AIHardPlayer(_theGame);
+				_ai = new AIEasyPlayer(_theGame);
 				break;
 		}
 
@@ -294,7 +300,10 @@ public static class GameController
 				break;
 			case GameState.ViewingHighScores:
 				HighScoreController.HandleHighScoreInput();
-				break;
+				break;	
+			case GameState.ViewingHowTo:
+				HowToController.HandleHowToInput();
+				break;		
 		}
 
 		UtilityFunctions.UpdateAnimations();
@@ -332,11 +341,28 @@ public static class GameController
 			case GameState.ViewingHighScores:
 				HighScoreController.DrawHighScores();
 				break;
+			case GameState.ViewingHowTo:
+				HowToController.DrawHowTo();
+				break;
 		}
 
 		UtilityFunctions.DrawAnimations();
-
+		
 		SwinGame.RefreshScreen();
+
+		//time tracking for message to fade away
+		_times++;
+
+		if (_msg != UtilityFunctions.Message)
+		{
+			_times=0;
+			_msg=UtilityFunctions.Message;
+		}
+		else if (_times >1000)
+		{
+			UtilityFunctions.Message="";
+		} 
+
 	}
 
 	/// <summary>
