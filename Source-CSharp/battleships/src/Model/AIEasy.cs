@@ -24,6 +24,7 @@ public class AIEasyPlayer : AIPlayer
 	/// <param name="column">the generated column</param>
 	protected override void GenerateCoords(ref int row, ref int column)
 	{
+		_Random = new Random();
 	    row = _Random.Next(0, EnemyGrid.Height);
 		column = _Random.Next(0, EnemyGrid.Width);
 	}
