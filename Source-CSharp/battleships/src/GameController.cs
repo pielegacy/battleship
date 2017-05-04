@@ -21,7 +21,8 @@ public static class GameController
 	private static AIPlayer _ai;
 
 	private static bool _isMusicPlaying = true;
-
+	private static bool _isMuteKeyDown = false;
+	
 	private static Stack<GameState> _state = new Stack<GameState>();
 
 	private static AIOption _aiSetting;
@@ -267,9 +268,9 @@ public static class GameController
 	private static void SetSound()
 	{
 		if (_isMusicPlaying)
-			SwinGame.StopMusic();
+			SwinGame.PauseMusic();
 		else
-			SwinGame.PlayMusic(GameResources.GameMusic("Background"));
+			SwinGame.ResumeMusic();
 		_isMusicPlaying = !_isMusicPlaying;
 	}
 	/// <summary>
@@ -282,8 +283,9 @@ public static class GameController
 	/// </remarks>
 	public static void HandleUserInput()
 	{
-		if (SwinGame.KeyTyped(KeyCode.vk_m))
+		if (SwinGame.KeyTyped(KeyCode.vk_m)){
 			SetSound();
+		}
 		//Read incoming input events
 		SwinGame.ProcessEvents();
 
