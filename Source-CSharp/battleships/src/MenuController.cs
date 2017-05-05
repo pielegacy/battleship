@@ -32,6 +32,7 @@ static class MenuController
 		new string[] {
 			"RETURN",
 			"SURRENDER",
+			"HOW TO",
 			"QUIT"
 		},
 		new string[] {
@@ -61,17 +62,18 @@ static class MenuController
 
 	//How to button
 	private const int MAIN_MENU_HOW_TO_BUTTON = 3;
-
 	private const int MAIN_MENU_QUIT_BUTTON = 4;
+
 	private const int SETUP_MENU_EASY_BUTTON = 0;
 	private const int SETUP_MENU_MEDIUM_BUTTON = 1;
 	private const int SETUP_MENU_HARD_BUTTON = 2;
-
 	private const int SETUP_MENU_EXIT_BUTTON = 3;
+
 	private const int GAME_MENU_RETURN_BUTTON = 0;
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
-
-	private const int GAME_MENU_QUIT_BUTTON = 2;
+	private const int GAME_MENU_HOW_TO_BUTTON = 2;
+	private const int GAME_MENU_QUIT_BUTTON = 3;
+	
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 
 	private static readonly Color HIGHLIGHT_COLOR = SwinGame.RGBAColor(1, 57, 86, 255);
@@ -353,6 +355,9 @@ static class MenuController
 				//end game menu
 				GameController.EndCurrentState();
 				//end game
+				break;
+			case GAME_MENU_HOW_TO_BUTTON:
+				GameController.AddNewState(GameState.ViewingHowTo);
 				break;
 			case GAME_MENU_QUIT_BUTTON:
 				GameController.AddNewState(GameState.Quitting);
