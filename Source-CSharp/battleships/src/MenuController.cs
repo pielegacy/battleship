@@ -51,6 +51,11 @@ static class MenuController
 	private const int BUTTON_HEIGHT = 15;
 	private const int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
 
+	private const int MUTE_BUTTONS_TOP = 20;
+	private const int MUTE_BUTTONS_LEFT = 690;
+	private const int MUTE_BUTTONS_WIDTH = 40;
+	
+
 	private const int TEXT_OFFSET = 0;
 	private const int MAIN_MENU = 0;
 	private const int GAME_MENU = 1;
