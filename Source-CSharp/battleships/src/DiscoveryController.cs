@@ -11,6 +11,9 @@ namespace Battleships
 /// </summary>
 static class DiscoveryController
 {
+	// location of cheat description
+	private const int CHEAT_DESC_TOP = 72;
+	private const int CHEAT_DESC_LEFT = 547;
 
 	/// <summary>
 	/// Handles input during the discovery phase of the game.
@@ -27,6 +30,12 @@ static class DiscoveryController
 
 		if (SwinGame.MouseClicked(MouseButton.LeftButton)) {
 			DoAttack();
+		}
+
+		//code for cheating the game
+		if (SwinGame.KeyDown(KeyCode.vk_z)){
+			GameController.cheat = true;
+			GameController.cheatActive();
 		}
 	}
 
@@ -73,7 +82,8 @@ static class DiscoveryController
 		SwinGame.DrawText(GameController.HumanPlayer.Shots.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SHOTS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Hits.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, HITS_TOP);
 		SwinGame.DrawText(GameController.HumanPlayer.Missed.ToString(), Color.White, GameResources.GameFont("Menu"), SCORES_LEFT, SPLASH_TOP);
-
+		//text for cheating the game description
+		SwinGame.DrawText("Hold Z for secret intel", Color.White, GameResources.GameFont("Courier"), CHEAT_DESC_LEFT, CHEAT_DESC_TOP);
 		UtilityFunctions.DrawMessage();
 	}
 

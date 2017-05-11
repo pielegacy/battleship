@@ -33,7 +33,8 @@ static class MenuController
 			"RETURN",
 			"SURRENDER",
 			"HOW TO",
-			"QUIT"
+			"QUIT",
+			"RESTART"
 		},
 		new string[] {
 			"EASY",
@@ -50,6 +51,11 @@ static class MenuController
 	private const int BUTTON_WIDTH = 75;
 	private const int BUTTON_HEIGHT = 15;
 	private const int BUTTON_SEP = BUTTON_WIDTH + MENU_GAP;
+
+	private const int MUTE_BUTTONS_TOP = 20;
+	private const int MUTE_BUTTONS_LEFT = 690;
+	private const int MUTE_BUTTONS_WIDTH = 40;
+	
 
 	private const int TEXT_OFFSET = 0;
 	private const int MAIN_MENU = 0;
@@ -73,6 +79,8 @@ static class MenuController
 	private const int GAME_MENU_SURRENDER_BUTTON = 1;
 	private const int GAME_MENU_HOW_TO_BUTTON = 2;
 	private const int GAME_MENU_QUIT_BUTTON = 3;
+	private const int GAME_MENU_RESTART_BUTTON = 4;
+
 	
 	private static readonly Color MENU_COLOR = SwinGame.RGBAColor(2, 167, 252, 255);
 
@@ -361,6 +369,9 @@ static class MenuController
 				break;
 			case GAME_MENU_QUIT_BUTTON:
 				GameController.AddNewState(GameState.Quitting);
+				break;
+			case GAME_MENU_RESTART_BUTTON:
+				GameController.StartGame();
 				break;
 		}
 	}

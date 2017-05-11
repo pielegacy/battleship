@@ -53,7 +53,7 @@ public class Player : IEnumerable<Ship>
 				_Ships.Add(name, new Ship(name));
 			}
 		}
-
+		
 		RandomizeDeployment();
 	}
 

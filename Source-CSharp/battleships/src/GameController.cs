@@ -14,6 +14,11 @@ namespace Battleships
 /// </summary>
 public static class GameController
 {
+	private const int CHEAT_DESC_TOP = 72;
+	private const int CHEAT_DESC_LEFT = 400;
+
+	public static bool cheat = false;
+
 	//time management
 	private static int _times;
 	private static string _msg;
@@ -74,9 +79,11 @@ public static class GameController
 	/// </remarks>
 	public static void StartGame()
 	{
+
 		if (_theGame != null)
 			EndGame();
 
+		
 		//Create the game
 		_theGame = new BattleShipsGame();
 
@@ -93,16 +100,40 @@ public static class GameController
 				break;
 			default:
 				_ai = new AIEasyPlayer(_theGame);
+
 				break;
 		}
 
 		_human = new Player(_theGame);
+		
+		//storing the location of the ships
+		ShipName t = ShipName.Tug;
+		ShipName s = ShipName.Submarine;
+		ShipName d = ShipName.Destroyer;
+		ShipName b = ShipName.Battleship;
+		ShipName ac = ShipName.AircraftCarrier;
+		Cheating.storeLocation(_ai.Ship(t),_ai.Ship(s),_ai.Ship(d),_ai.Ship(b),_ai.Ship(ac));
+		
 
 		//AddHandler _human.PlayerGrid.Changed, AddressOf GridChanged
 		_ai.PlayerGrid.Changed += GridChanged;
 		_theGame.AttackCompleted += AttackCompleted;
 
 		AddNewState(GameState.Deploying);
+		
+	}
+
+	public static void cheatActive(){
+
+		//cheating the game
+		SwinGame.DrawText("Secret Intel! Enemy's:", Color.White, GameResources.GameFont("Courier"), CHEAT_DESC_LEFT, CHEAT_DESC_TOP - 10);
+		SwinGame.DrawText("tug: " + Cheating.eTug.Row + "," + Cheating.eTug.Column, Color.White, GameResources.GameFont("Courier"), CHEAT_DESC_LEFT, CHEAT_DESC_TOP);
+		SwinGame.DrawText("Submarine: " + Cheating.eSubmarine.Row + "," + Cheating.eSubmarine.Column, Color.White, GameResources.GameFont("Courier"), CHEAT_DESC_LEFT, CHEAT_DESC_TOP + 10);
+		SwinGame.DrawText("Destroyer: " + Cheating.eDestroyer.Row + "," + Cheating.eDestroyer.Column, Color.White, GameResources.GameFont("Courier"), CHEAT_DESC_LEFT, CHEAT_DESC_TOP + 20);
+		SwinGame.DrawText("BattleShip: " + Cheating.eBattleship.Row + "," + Cheating.eBattleship.Column, Color.White, GameResources.GameFont("Courier"), CHEAT_DESC_LEFT, CHEAT_DESC_TOP + 30);
+		SwinGame.DrawText("Aircraft Carrier: " + Cheating.eAircraftCarrier.Row + "," + Cheating.eAircraftCarrier.Column, Color.White, GameResources.GameFont("Courier"), CHEAT_DESC_LEFT, CHEAT_DESC_TOP + 40);
+		UtilityFunctions.DrawMessage();
+		SwinGame.RefreshScreen();
 	}
 
 	/// <summary>

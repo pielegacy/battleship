@@ -20,6 +20,10 @@ static class DeploymentController
 
 	private const int SHIPS_WIDTH = 300;
 
+	private const int MUTE_BUTTONS_TOP = 20;
+	private const int MUTE_BUTTONS_LEFT = 690;
+	private const int MUTE_BUTTONS_WIDTH = 40;
+
 	private const int RANDOM_BUTTON_LEFT = 547;
 	private const int RANDOM_BUTTON_WIDTH = 51;
 
@@ -162,7 +166,8 @@ static class DeploymentController
 		}
 
 		SwinGame.DrawBitmap(GameResources.GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
-
+		
+		SwinGame.DrawBitmap(GameResources.GameImage("MuteButton"), MUTE_BUTTONS_LEFT, TOP_BUTTONS_TOP);
 		UtilityFunctions.DrawMessage();
 
 	}
@@ -174,7 +179,7 @@ static class DeploymentController
 	private static ShipName GetShipMouseIsOver()
 	{
 		foreach (ShipName sn in Enum.GetValues(typeof(ShipName))) {
-			int i = 0;
+		int i = 0;
 			i = ((int)sn) - 1;
 
 			if (UtilityFunctions.IsMouseInRectangle(SHIPS_LEFT, SHIPS_TOP + i * SHIPS_HEIGHT, SHIPS_WIDTH, SHIPS_HEIGHT)) {
