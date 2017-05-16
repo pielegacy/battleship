@@ -167,7 +167,7 @@ static class DeploymentController
 
 		SwinGame.DrawBitmap(GameResources.GameImage("RandomButton"), RANDOM_BUTTON_LEFT, TOP_BUTTONS_TOP);
 		
-		SwinGame.DrawBitmap(GameResources.GameImage("MuteButton"), MUTE_BUTTON_LEFT, TOP_BUTTONS_TOP);
+		SwinGame.DrawBitmap(GameResources.GameImage("MuteButton"), MUTE_BUTTONS_LEFT, TOP_BUTTONS_TOP);
 		UtilityFunctions.DrawMessage();
 
 	}
