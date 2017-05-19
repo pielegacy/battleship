@@ -53,8 +53,8 @@ namespace Battleships
 		{
 			NewSound("Error", "error.wav");
 			NewSound("Hit", "hit.wav");
+            NewSound("Siren", "siren.wav");
 			NewSound("Sink", "sink.wav");
-			NewSound("Siren", "siren.wav");
 			NewSound("Miss", "watershot.wav");
 			NewSound("Winner", "winner.wav");
 			NewSound("Lose", "lose.wav");
