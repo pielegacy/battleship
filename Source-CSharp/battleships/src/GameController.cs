@@ -16,6 +16,7 @@ namespace Battleships
 	{
 		//time management
 		private static int _times;
+
 		private static string _msg;
 
 		private static BattleShipsGame _theGame;
